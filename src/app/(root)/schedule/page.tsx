@@ -2,7 +2,9 @@ import React from 'react'
 
 function SchedulePage() {
   return (
-    <div>Schedule page</div>
+    <div>
+      <h1> Schedule page
+        </h1></div>
   )
 }
 
