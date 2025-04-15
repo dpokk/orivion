@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 import { Toaster} from "react-hot-toast";
+import "@stream-io/video-react-sdk/dist/css/styles.css";
 
 
 const geistSans = localFont({

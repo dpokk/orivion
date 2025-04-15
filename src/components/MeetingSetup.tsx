@@ -41,9 +41,7 @@ function MeetingSetup({ onSetupComplete }: { onSetupComplete: () => void }) {
             </div>
 
             {/* VIDEO PREVIEW */}
-            <div className="mt-4 flex-1 min-h-[400px] rounded-xl overflow-hidden bg-muted/50 border relative" 
-                     // Flip the video horizontally only when inversion is enabled
-                    style={{ transform: !isVideoInverted ? "scaleX(-1)" : "none" }}>
+            <div className="mt-4 flex-1 min-h-[400px] rounded-xl overflow-hidden bg-muted/50 border relative">
               <div className="absolute inset-0">
                 <VideoPreview className="h-full w-full" />
               </div>
@@ -77,31 +75,7 @@ function MeetingSetup({ onSetupComplete }: { onSetupComplete: () => void }) {
                     </div>
                     <Switch
                       checked={!isCameraDisabled}
-                      onCheckedChange={(checked) => {setIsCameraDisabled(!checked);
-                                                    // 👇 Smart behavior: if video is inverted and camera is being turned OFF,
-      //                                             then also turn OFF inversion to avoid leaving inversion enabled for next time.
-                                                    !isVideoInverted?  setIsVideoInverted(!checked) : false
-                      }}
-                    />
-                  </div>
-
-
-                      {/* VIDEO INVERSION CONTROL */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3 pl-12 ml-3 mb-2">
-                      
-                      <div>
-                        
-                        <p className="text-m text-muted-foreground">
-                        - (Invert Camera Feed) 
-                          {isVideoInverted ? " Off" : " On"}
-                        </p>
-                      </div>
-                    </div>
-                    <Switch
-                      checked={
-                        !isVideoInverted}
-                      onCheckedChange={(checked) => setIsVideoInverted(!checked)}
+                      onCheckedChange={(checked) => {setIsCameraDisabled(!checked)}}
                     />
                   </div>
                   
