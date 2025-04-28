@@ -72,10 +72,10 @@ Deploy the platform using Vercel or similar platforms. Ensure all required envir
 - AI Interview Practice
 An AI-powered interview practice feature. This will allow candidates to simulate mock interviews and get graded based on key factors such as:
 
-Technical Knowledge: Accuracy and depth of answers.
-Problem-Solving: Approach and reasoning.
-Communication: Clarity and effectiveness.
-Behavioral Responses: Confidence and demeanor during soft-skill questions.
+- Technical Knowledge: Accuracy and depth of answers.
+- Problem-Solving: Approach and reasoning.
+- Communication: Clarity and effectiveness.
+- Behavioral Responses: Confidence and demeanor during soft-skill questions.
 
 The AI will also provide personalized feedback and suggestions for improvement, helping candidates prepare more effectively for real interviews.
 
