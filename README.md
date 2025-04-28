@@ -69,8 +69,7 @@ Deploy the platform using Vercel or similar platforms. Ensure all required envir
 
 ## Future Improvements
 
-- AI Interview Practice
-An AI-powered interview practice feature. This will allow candidates to simulate mock interviews and get graded based on key factors such as:
+AI-Interview Practice:  This will allow candidates to simulate mock interviews and get graded based on key factors such as:
 
 - Technical Knowledge: Accuracy and depth of answers.
 - Problem-Solving: Approach and reasoning.
