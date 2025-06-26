@@ -3,7 +3,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import useMeetingActions from "@/hooks/useMeetingActions";
-import { Toaster } from "react-hot-toast";
 
 interface MeetingModalProps {
   isOpen: boolean;
@@ -20,13 +19,13 @@ function MeetingModal({ isOpen, onClose, title, isJoinMeeting }: MeetingModalPro
     if (isJoinMeeting) {
       // if it's a full URL extract meeting ID
       const meetingId = meetingUrl.split("/").pop();
-      if (meetingId) joinMeeting(meetingId); //if already exists then join meething
+      if (meetingId) joinMeeting(meetingId);
     } else {
-      createInstantMeeting(); //create new meeting
+      createInstantMeeting();
     }
 
     setMeetingUrl("");
-    onClose(); //closes the modal
+    onClose();
   };
 
   return (

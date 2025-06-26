@@ -6,7 +6,7 @@ export const useUserRole = () => {
   const { user } = useUser();
 
   const userData = useQuery(api.users.getUserByClerkId, {
-    clerkId: user?.id || "", //if it is undefined we get an empty string
+    clerkId: user?.id || "",
   });
 
   const isLoading = userData === undefined;

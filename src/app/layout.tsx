@@ -8,7 +8,6 @@ import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 import { Toaster} from "react-hot-toast";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",

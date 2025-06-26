@@ -8,7 +8,6 @@ import { Button } from "./ui/button";
 function MeetingSetup({ onSetupComplete }: { onSetupComplete: () => void }) {
   const [isCameraDisabled, setIsCameraDisabled] = useState(true);
   const [isMicDisabled, setIsMicDisabled] = useState(false);
-  const [isVideoInverted, setIsVideoInverted] = useState(true);
 
   const call = useCall();
 
@@ -75,10 +74,9 @@ function MeetingSetup({ onSetupComplete }: { onSetupComplete: () => void }) {
                     </div>
                     <Switch
                       checked={!isCameraDisabled}
-                      onCheckedChange={(checked) => {setIsCameraDisabled(!checked)}}
+                      onCheckedChange={(checked) => setIsCameraDisabled(!checked)}
                     />
                   </div>
-                  
 
                   {/* MIC CONTROL */}
                   <div className="flex items-center justify-between">
