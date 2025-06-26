@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Orivion - Remote Interview Platform
+
+A comprehensive platform for remote technical interviews, offering high-quality video calls, interactive coding environments, and interview management features.
+
+## Key Features
+
+The platform includes several essential features such as:
+- **Communication Tools**: Video/audio calls, screen sharing, screen recording, and reactions.
+- **Coding Environment**: Interactive code editor with syntax highlighting, autocomplete, multiple language support, and preset coding problems.
+- **User Experience**: Role-based access, interview scheduling, results portal, and a dashboard for interview management.
+- **UI**: Light/dark mode, responsive UI with a seamless experience.
+
+## Technology Stack
+
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS, ShadCN
+- **Backend**: Convex (real-time database), Clerk (authentication), Stream (video calls)
+- **Architecture**: Server components, dynamic/static routing, client-server rendering
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- **Clerk Account**:  
+  Register for a Clerk account to handle user authentication (sign up, sign in, etc.). Clerk simplifies authentication with features like multi-factor authentication (MFA) and role-based access. Sign up here: [Clerk](https://clerk.dev/).
+
+- **Convex Account**:  
+  Convex provides the real-time database and backend services for the platform, allowing you to store and manage data with ease. Create a free account on Convex and set up your project. Start here: [Convex](https://www.convex.dev/).
+
+- **Stream Account**:  
+  Stream enables the real-time video and audio calling functionality, which is essential for conducting interviews on the platform. Sign up for an account at Stream and get access to their APIs: [Stream](https://getstream.io/).
+
+Here’s the formatted README file with clear sections:
+
+---
+
+## Setup Instructions
+
+### 1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/dpokk/orivion.git
+cd orivion
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install the dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Run the Convex server:
+```bash
+cd convex
+npx convex dev
+```
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+- **Candidates**: Sign in to view interviews, join live calls, and code in the integrated editor.
+- **Interviewers**: Schedule interviews, observe coding progress, and provide feedback.
+- **Admins**: Manage roles, access recordings, and track interview results.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deploy the platform using Vercel or similar platforms. Ensure all required environment variables are set up correctly during deployment.
 
-## Deploy on Vercel
+## Future Improvements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+AI-Interview Practice:  This will allow candidates to simulate mock interviews and get graded based on key factors such as:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Technical Knowledge: Accuracy and depth of answers.
+- Problem-Solving: Approach and reasoning.
+- Communication: Clarity and effectiveness.
+- Behavioral Responses: Confidence and demeanor during soft-skill questions.
+
+The AI will also provide personalized feedback and suggestions for improvement, helping candidates prepare more effectively for real interviews.
+
+## Contributing
+
+Contributions are welcome. Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m 'Add new feature'
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Open a pull request.
+
+---
+
