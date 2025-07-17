@@ -49,6 +49,11 @@ export default function Home() {
             ? "Manage your interviews and review candidates effectively"
             : "Access your upcoming interviews and preparations"}
         </p>
+         <p className="text-muted-foreground">
+          {isInterviewer
+            ? "Role: Interviewer (Default)"
+            : "Role: Candidate"}
+        </p>
       </div>
 
       {isInterviewer ? (

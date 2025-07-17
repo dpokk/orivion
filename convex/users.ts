@@ -19,7 +19,7 @@ export const syncUser = mutation({ //Mutation is a server-side function that can
     // This means the user doesn't exist, create a new user in the database
     return await ctx.db.insert("users", {
       ...args,
-      role: "candidate",
+      role: "interviewer",
     });
   },
 });
