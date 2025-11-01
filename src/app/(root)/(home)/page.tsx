@@ -11,14 +11,22 @@ import MeetingModal from "@/components/MeetingModal";
 import LoaderUI from "@/components/LoaderUI";
 import { Loader2Icon } from "lucide-react";
 import MeetingCard from "@/components/MeetingCard";
+import { useEffect } from "react";
 
 export default function Home() {
   const router = useRouter();
 
-  const { isInterviewer, isCandidate, isLoading } = useUserRole();
+  const { isInterviewer, isCandidate, isLoading, userData } = useUserRole();
   const interviews = useQuery(api.interviews.getMyInterviews);
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState<"start" | "join">();
+
+  // Redirect to onboarding if user doesn't have a role set
+  useEffect(() => {
+    if (!isLoading && userData && !userData.role) {
+      router.push("/onboarding");
+    }
+  }, [isLoading, userData, router]);
 
   const handleQuickAction = (title: string) => {
     switch (title) {
@@ -36,6 +44,9 @@ export default function Home() {
   };
 
   if (isLoading) return <LoaderUI />;
+  
+  // Show loading while redirecting to onboarding
+  if (userData && !userData.role) return <LoaderUI />;
 
   return (
     <div className="container max-w-7xl mx-auto p-6">

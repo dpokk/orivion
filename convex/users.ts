@@ -17,10 +17,40 @@ export const syncUser = mutation({ //Mutation is a server-side function that can
     if (existingUser) return; 
 
     // This means the user doesn't exist, create a new user in the database
+    // Don't set role initially, user will select role on onboarding page
     return await ctx.db.insert("users", {
-      ...args,
-      role: "interviewer",
+      name: args.name,
+      email: args.email,
+      clerkId: args.clerkId,
+      image: args.image,
+      // role is not set, will be added during onboarding
     });
+  },
+});
+
+// This mutation updates a user's role (for onboarding)
+export const updateUserRole = mutation({
+  args: {
+    clerkId: v.string(),
+    role: v.union(v.literal("candidate"), v.literal("interviewer")),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("User is not authenticated");
+
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", args.clerkId))
+      .first();
+
+    if (!user) throw new Error("User not found");
+
+    // Update the user's role
+    await ctx.db.patch(user._id, {
+      role: args.role,
+    });
+
+    return user._id;
   },
 });
 

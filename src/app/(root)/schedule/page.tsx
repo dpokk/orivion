@@ -8,9 +8,16 @@ import InterviewScheduleUI from "./InterviewScheduleUI";
 function SchedulePage() {
   const router = useRouter();
 
-  const { isInterviewer, isLoading } = useUserRole();
+  const { isInterviewer, isLoading, userData } = useUserRole();
 
   if (isLoading) return <LoaderUI />;
+  
+  // Redirect to onboarding if no role
+  if (!userData?.role) {
+    router.push("/onboarding");
+    return <LoaderUI />;
+  }
+  
   if (!isInterviewer) return router.push("/");
 
   return <InterviewScheduleUI />;
