@@ -114,7 +114,7 @@ export default function LandingPage() {
                                 {/* Editor Side */}
                                 <div className="p-6 border-r border-white/5 overflow-hidden relative">
                                     <div className="absolute right-4 top-4 text-xs bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded">TypeScript</div>
-                                    <div className="space-y-1 opacity-90">
+                                    <div className="space-y-1 opacity-90 pt-6">
                                         <p><span className="text-purple-400">function</span> <span className="text-blue-400">twoSum</span>(nums: <span className="text-yellow-400">number[]</span>, target: <span className="text-yellow-400">number</span>) {'{'}</p>
                                         <p className="pl-4"><span className="text-purple-400">const</span> map = <span className="text-purple-400">new</span> <span className="text-yellow-400">Map</span>();</p>
                                         <p className="pl-4"><span className="text-purple-400">for</span> (<span className="text-purple-400">let</span> i = 0; i &lt; nums.length; i++) {'{'}</p>
