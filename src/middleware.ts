@@ -1,6 +1,12 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export default clerkMiddleware();
+// Routes anyone can access without signing in (landing + auth pages)
+const isPublicRoute = createRouteMatcher(["/", "/sign-in(.*)", "/sign-up(.*)"]);
+
+export default clerkMiddleware(async (auth, req) => {
+  // Protect all routes except landing and sign-in/sign-up
+  if (!isPublicRoute(req)) await auth.protect();
+});
 
 export const config = {
   matcher: [

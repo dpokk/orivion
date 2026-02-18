@@ -4,29 +4,34 @@ import ActionCard from "@/components/ActionCard";
 import { QUICK_ACTIONS } from "@/constants";
 import { useUserRole } from "@/hooks/useUserRole";
 import { useQuery } from "convex/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "../../../../convex/_generated/api";
 import { useRouter } from "next/navigation";
 import MeetingModal from "@/components/MeetingModal";
 import LoaderUI from "@/components/LoaderUI";
 import { Loader2Icon } from "lucide-react";
 import MeetingCard from "@/components/MeetingCard";
-import { useEffect } from "react";
+import { useAuth } from "@clerk/nextjs";
+import LandingPage from "@/components/LandingPage";
 
 export default function Home() {
   const router = useRouter();
-
+  const { isSignedIn, isLoaded: isAuthLoaded } = useAuth();
   const { isInterviewer, isCandidate, isLoading, userData } = useUserRole();
   const interviews = useQuery(api.interviews.getMyInterviews);
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState<"start" | "join">();
 
-  // Redirect to onboarding if user doesn't have a role set
+  // Redirect to onboarding if signed in but user doesn't have a role set
   useEffect(() => {
-    if (!isLoading && userData && !userData.role) {
+    if (isSignedIn && !isLoading && userData && !userData.role) {
       router.push("/onboarding");
     }
-  }, [isLoading, userData, router]);
+  }, [isSignedIn, isLoading, userData, router]);
+
+  // Show landing for signed-out users
+  if (!isAuthLoaded) return <LoaderUI />;
+  if (!isSignedIn) return <LandingPage />;
 
   const handleQuickAction = (title: string) => {
     switch (title) {

@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Toaster} from "react-hot-toast";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 
@@ -18,7 +18,6 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-
 export const metadata: Metadata = {
   title: "Orivion",
   description: "Orivion is an platform for conducting Realtime Technical Interviews with real-time coding, video, and audio capabilities.",
@@ -52,9 +51,8 @@ export default function RootLayout({
             </div>
           </SignedIn>
 
-          <SignedOut>
-            <RedirectToSignIn/>
-          </SignedOut>
+          {/* Public routes (/, /sign-in, /sign-up) render here when signed out; middleware redirects other routes to sign-in */}
+          <SignedOut>{children}</SignedOut>
            
           </ThemeProvider>
           <Toaster />

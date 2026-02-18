@@ -6,6 +6,31 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Landing Page Utilities */
+  .landing-bg {
+    background-image:
+      radial-gradient(at 0% 0%, hsla(var(--primary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(var(--primary) / 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(var(--primary) / 0.05) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(var(--primary) / 0.05) 0px, transparent 50%);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-muted-foreground;
+  }
+
+  .glass-card {
+    @apply bg-background/60 backdrop-blur-xl border border-border/50 shadow-sm;
+  }
+
+  .blob {
+    @apply absolute rounded-full blur-3xl opacity-20 -z-10;
+  }
+
+  .container-custom {
+    @apply mx-auto w-full max-w-[95%] lg:max-w-[80%] xl:max-w-[70%] px-4 md:px-6;
+  }
 }
 
 
@@ -74,7 +99,28 @@
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
+}
+
+@layer base {
+
+  code,
+  pre {
+    @apply font-mono;
+  }
+}
+
+/* Hide scrollbar globally */
+html {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }

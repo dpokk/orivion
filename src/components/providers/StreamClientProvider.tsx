@@ -30,8 +30,12 @@ const StreamVideoProvider = ({ children }: { children: ReactNode }) => {
 
     // Save the client instance to state
     setStreamVideoClient(client);
-  }, [user, isLoaded]); 
+  }, [user, isLoaded]);
 
+  // Wait for Clerk to load before deciding
+  if (!isLoaded) return <LoaderUI />;
+  // Signed-out users (e.g. on landing) don't need Stream; just render children
+  if (!user) return <>{children}</>;
   if (!streamVideoClient) return <LoaderUI />;
 
   // Provide the initialized StreamVideo client to all children via context
